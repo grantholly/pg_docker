@@ -59,3 +59,8 @@ spec.template.spec.containers[].args.imagePullPolicy: Never
 
 # deploy!!!
 kubectl apply -f .
+
+# teardown everything
+minikube delete
+
+rm -rf ~/.minikube
