@@ -19,3 +19,18 @@ sudo docker run \
      -p 5432:5432 \
      -d postgres:10
 
+# now let's add some persistence for our data so we
+# don't lose any state if the container dies.  We will
+# create a directory "data" to hold the postgres WAL,
+# data, logs, config files, and data
+mkdir $HOME/github/pg_docker/data
+
+sudo docker run \
+     --rm \
+     --name pg \
+     --network host \
+     -v $HOME/github/pg_docker/data:/var/lib/postgresql/data/pgdata \
+     -e PGDATA=/var/lib/postgresql/data/pgdata \
+     -e POSTGRES_PASSWORD=postgres \
+     -p 5432:5432 \
+     -d postgres:10
