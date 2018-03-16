@@ -29,6 +29,8 @@ export CHANGE_MINIKUBE_NONE_USER=true
 mkdir $HOME/.kube || true
 touch $HOME/.kube/config
 
+# NOTE: I'm doing this demo on Linux, so I can get away with `--vm-driver=None`
+# however, the virtualbox driver is also pretty good
 export KUBECONFIG=$HOME/.kube/config
 sudo -E minikube start --vm-driver=none
 
